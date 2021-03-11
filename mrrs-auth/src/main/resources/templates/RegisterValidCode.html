@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h2{
+            color: #2b85e4;
+        }
+    </style>
+</head>
+<body>
+<b>您好，你正在申请注册MRRS的账号</b><br>
+<b>这是本次注册的验证码</b><br>
+<h2 th:text="${validCode}"></h2><br>
+<b>该验证码10分钟内有效</b><br>
+<b>技术支持 by MRRS</b><br>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuqi.mrrs.subject.dao.SubjectDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.yuqi.mrrs.subject.entity.SubjectEntity" id="subjectMap">
+        <result property="id" column="id"/>
+        <result property="nameCn" column="name_cn"/>
+        <result property="nameUs" column="name_us"/>
+        <result property="playDesc" column="play_desc"/>
+        <result property="datePublished" column="date_published"/>
+        <result property="label" column="label"/>
+        <result property="rating" column="rating"/>
+        <result property="playVotes" column="play_votes"/>
+        <result property="otherName" column="other_name"/>
+        <result property="playActor" column="play_actor"/>
+        <result property="director" column="director"/>
+        <result property="playWriter" column="play_writer"/>
+        <result property="country" column="country"/>
+        <result property="language" column="language"/>
+        <result property="playImg" column="play_img"/>
+        <result property="subjectType" column="subject_type"/>
+        <result property="number" column="number"/>
+        <result property="duration" column="duration"/>
+        <result property="version" column="version"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <association property="genre" javaType="com.yuqi.mrrs.subject.entity.GenreEntity">
+            <id column="genre.id" property="id"></id>
+            <result column="genre.name" property="name"></result>
+        </association>
+    </resultMap>
+
+    <sql id="subject_base_column">
+    id,name_cn,name_us,play_desc,date_published,genre,label,rating,play_votes,other_name,play_actor,director,play_writer,country,language,play_img,subject_type,number,duration,version,create_time,update_time
+    </sql>
+
+    <select id="SelectByPrimaryKey" resultMap="subjectMap">
+       select
+       <include refid="subject_base_column"></include>,genre.name
+       from mrrs_subject subject left join mrrs_genre genre on subject.genre=genre.id
+    </select>
+
+</mapper>

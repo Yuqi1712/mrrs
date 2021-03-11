@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuqi.mrrs.auth.dao.UserDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.yuqi.mrrs.auth.entity.UserEntity" id="userMap">
+        <result property="id" column="id"/>
+        <result property="userAccount" column="user_account"/>
+        <result property="userPassword" column="user_password"/>
+        <result property="userName" column="user_name"/>
+        <result property="userAge" column="user_age"/>
+        <result property="userGender" column="user_gender"/>
+        <result property="userIcon" column="user_icon"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="version" column="version"/>
+        <result property="deleted" column="deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="checkUserAccount" parameterType="String" resultType="Integer">
+        select count(*) from mrrs_user
+        where user_account =#{account}
+    </select>
+
+    <select id="checkUserEmail" parameterType="String" resultType="Integer">
+        select count(*) from mrrs_user
+        where user_email =#{email}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuqi.mrrs.celebrity.dao.CelebrityDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.yuqi.mrrs.celebrity.entity.CelebrityEntity" id="celebrityMap">
+        <result property="id" column="id"/>
+        <result property="nameCn" column="name_cn"/>
+        <result property="nameUs" column="name_us"/>
+        <result property="sex" column="sex"/>
+        <result property="constellation" column="constellation"/>
+        <result property="birthday" column="birthday"/>
+        <result property="birthPlace" column="birth_place"/>
+        <result property="profession" column="profession"/>
+        <result property="otherName" column="other_name"/>
+        <result property="introduction" column="introduction"/>
+        <result property="playImg" column="play_img"/>
+        <result property="version" column="version"/>
+        <result property="deleted" column="deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>

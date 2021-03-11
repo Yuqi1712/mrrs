@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuqi.mrrs.subject.dao.UserReviewHistoryDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.yuqi.mrrs.subject.entity.UserReviewHistoryEntity" id="historyMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="movieCount" column="movie_count"/>
+        <result property="version" column="version"/>
+        <result property="deleted" column="deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="getSimilarLikeUser" parameterType="Map" resultType="Long">
+        select user_id from mrrs_user_review_history
+        where json_contains(review_list,JSON_QUOTE(#{subject})) and user_id!=#{user}
+    </select>
+
+
+</mapper>

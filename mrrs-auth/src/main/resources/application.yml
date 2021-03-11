@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: mrrs-auth
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/movie_2r?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 12345kass
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #Oracle需要打开注释
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+
+  mail:
+    username: 864619545@qq.com
+    password: tshsvnftoepqbbhd
+    host: smtp.qq.com
+    #properties: mail.smtp.ssl.enable: true
+  redis:
+    password: 12345kass
+
+server:
+  port: 10007
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+mrrs:
+  user:
+    redis:
+      registerValidTTL: 10      #用户注册时发送的邮箱验证码有效期  单位为MIN
+      prefix: user
+
+
+
